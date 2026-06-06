@@ -31,12 +31,9 @@ This release is scoped for **manuscript reproducibility** (threshold audit, Fair
 | `CITATION.cff` | Citation metadata for the anonymous review release. |
 | `LICENSE` | MIT licence for repository source code. |
 | `README.md` | Repository overview, quick start, reproduction summary, and citation note. |
-| `RELEASE_MANIFEST.md` | Release inventory describing included artefacts and intentionally excluded raw data. |
 | `REPRODUCIBILITY_NOTES.md` | Scope notes explaining what can be reproduced from the release and what requires external data. |
-| `ZENODO_UPLOAD_INSTRUCTIONS.md` | Post-review archive instructions with DOI fields withheld during double-anonymous review. |
 | `environment.yml` | Conda environment specification for the audit workflow. |
 | `requirements.txt` | Python package requirements for pip-based setup. |
-| `zenodo_metadata.json` | Anonymous Zenodo metadata template for later archival release. |
 
 ## Quick start (minimal demo, no full dataset)
 
