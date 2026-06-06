@@ -1,0 +1,10 @@
+_target_: fire_equality.datamodules.firetracks_datamodule.FireTracksBinaryDataModule
+
+data_path: data/processed/processed_firetracks_pixel_binary_2002-2004.pth
+batch_size: 32
+train_ratio: 0.7
+val_ratio: 0.15
+test_ratio: 0.15
+num_workers: 0
+seed: 42
+

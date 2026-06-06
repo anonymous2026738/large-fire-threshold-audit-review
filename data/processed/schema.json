@@ -1,0 +1,16 @@
+{
+  "file_format": "PyTorch .pth dict",
+  "required_top_level_keys": [
+    "spatiotemporal_samples",
+    "config"
+  ],
+  "sample_keys": [
+    "features",
+    "target",
+    "metadata"
+  ],
+  "features_shape": "[T, H, W, C] with T=10, H=W=25, C=8",
+  "dataloader_tensor_shape": "[C, T, H, W] after FireTracksDataset",
+  "target": "integer 0/1 for binary_classification",
+  "full_dataset": "Seven shards processed_firetracks_pixel_binary_YYYY-YYYY.pth (not redistributed; see data/README.md)"
+}

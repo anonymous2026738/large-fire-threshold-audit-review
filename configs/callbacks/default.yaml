@@ -1,0 +1,25 @@
+# 主 checkpoint：按 val/auc 选 best（与现有 outputs / multirun 一致）
+model_checkpoint:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  monitor: val/auc
+  mode: max
+  save_top_k: 3
+  filename: fire-equality-{epoch:02d}-{val_auc:.4f}
+  save_last: true
+
+# 按 val/f1 保存，与 val/auc 同时作为公平性分析对比指标
+model_checkpoint_f1:
+  _target_: pytorch_lightning.callbacks.ModelCheckpoint
+  monitor: val/f1
+  mode: max
+  save_top_k: 3
+  filename: fire-equality-f1-{epoch:02d}-{val_f1:.4f}
+  save_last: false
+
+early_stopping:
+  _target_: pytorch_lightning.callbacks.EarlyStopping
+  monitor: val/loss
+  mode: min
+  patience: 10
+  verbose: true
+

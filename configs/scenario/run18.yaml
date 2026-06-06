@@ -1,0 +1,7 @@
+# Run 18: 细网格 around Run4，不同随机种子
+# 对应编号 18（multirun 子目录为 2）
+model:
+  lr: 0.0003
+  hidden_size: 64
+  positive_weight: 0.5
+seed: 2025

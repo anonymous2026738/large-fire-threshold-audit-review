@@ -1,0 +1,4 @@
+grouping,group,optimized_threshold,accuracy,precision,recall,f1,auc
+gdp_per_capita,Low,0.7593,0.9322,0.9522,0.9310,0.9415,0.9775
+gdp_per_capita,Medium,0.1523,0.8829,0.4339,0.8154,0.5664,0.9263
+gdp_per_capita,High,0.2126,0.7903,0.4360,0.7073,0.5395,0.8498

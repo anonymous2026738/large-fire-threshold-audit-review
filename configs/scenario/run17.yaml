@@ -1,0 +1,7 @@
+# Run 17: 细网格 around Run4，略大学习率
+# 对应编号 17（multirun 子目录为 1）
+model:
+  lr: 0.0004
+  hidden_size: 64
+  positive_weight: 0.5
+seed: 42

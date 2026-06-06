@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments & secrets
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+
+# IDE / OS
+.idea/
+.vscode/
+.cursor/
+.DS_Store
+Thumbs.db
+
+# Training artefacts (not part of minimal release)
+multirun/
+outputs/
+lightning_logs/
+*.ckpt
+!results/checkpoints/fire-equality-run18-epoch49.ckpt
+
+# Large / raw geospatial data (do not commit)
+dataset/
+data/raw/
+data/processed/processed_firetracks_pixel_binary_*.pth
+data/processed/*.nc
+data/processed/*.tif
+data/processed/*.h5
+*.nc
+*.tif
+*.tiff
+*.h5
+*.hdf5
+
+# Logs & caches (regenerable)
+*.log
+fairness_plot_cache_backup.pkl
+results/figures_reproduced/
+
+# Demo tensor (regenerable; keep schema + CSV in git)
+data/processed/mini_sample.pth
+
+# LaTeX aux
+*.aux
+*.log
+*.out
+*.bcf
+*.blg
+*.bbl
+*.synctex.gz
+
+# Manuscript PDFs optional locally
+# *.pdf
+
+src/fire_equality/conf/

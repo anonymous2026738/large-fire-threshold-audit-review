@@ -1,0 +1,4 @@
+grouping,group,optimized_threshold,accuracy,precision,recall,f1,auc
+population_density,Low,0.4015,0.8854,0.8643,0.7640,0.8111,0.9488
+population_density,Medium,0.4216,0.9312,0.9296,0.9076,0.9185,0.9677
+population_density,High,0.4658,0.9514,0.9109,0.8960,0.9034,0.9812

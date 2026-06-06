@@ -1,0 +1,18 @@
+# @package _global_
+
+defaults:
+  - model: fire_equality_model
+  - datamodule: firetracks_binary
+  - trainer: default
+  - callbacks: default
+  - logger: csv
+  - optional scenario: run16
+
+seed: 42
+
+# 训练后是否在测试集上评估
+test_after_training: true
+
+# 用于超参数优化的指标（可选）
+# optimized_metric: val/auc
+

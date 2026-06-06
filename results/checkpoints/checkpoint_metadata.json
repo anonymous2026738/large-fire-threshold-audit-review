@@ -1,0 +1,13 @@
+{
+  "checkpoint_file": "fire-equality-run18-epoch49.ckpt",
+  "selection": "Best validation AUC among fine-grid scenarios run16-run19",
+  "scenario": "run18",
+  "hyperparameters": {
+    "lr": 0.0003,
+    "hidden_size": 64,
+    "positive_weight": 0.5,
+    "seed": 2025
+  },
+  "training_data": "Seven shards: processed_firetracks_pixel_binary_2002-2020 (not included in this repository)",
+  "notes": "Filename val_auc=0.0000 is a Lightning callback display artefact; use metrics.csv val/auc for selection."
+}

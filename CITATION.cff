@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Group-wise Threshold Effects in a Global Deep Learning Fire Danger Prediction Model: Code and Audit Outputs"
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Pan
+    given-names: Anonymous
+    affiliation: "Affiliation withheld for double-anonymous review"
+    email: anonymous@example.com
+repository-code: "withheld for double-anonymous review"
+license: MIT
+version: v1.0.0

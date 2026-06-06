@@ -1,0 +1,25 @@
+_target_: fire_equality.models.fire_equality_model.ConvLSTM_fire_equality_model
+
+dynamic_features:
+  - FWI
+  - VPD
+  - NDVI
+  - max_temp
+  - max_wind
+
+static_features:
+  - Population
+  - GDP
+  - LandCover
+
+hidden_size: 32
+lstm_layers: 1
+lr: 0.001
+positive_weight: 0.5
+lr_scheduler_step: 10
+lr_scheduler_gamma: 0.1
+weight_decay: 0.0005
+dropout: 0.5
+access_mode: spatiotemporal
+clc: false
+

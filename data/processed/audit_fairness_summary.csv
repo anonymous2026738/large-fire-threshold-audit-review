@@ -1,0 +1,4 @@
+grouping,equalized_odds_difference,demographic_parity_difference,significant_tests,total_tests
+population_density,0.1436,0.1676,6,6
+gdp_per_capita,0.2236,0.3966,6,6
+continent,0.2432,0.2441,6,6
