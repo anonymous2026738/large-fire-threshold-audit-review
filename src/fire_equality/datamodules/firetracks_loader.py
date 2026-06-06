@@ -864,7 +864,7 @@ def create_spatiotemporal_patches(preprocessed_data, patch_size_km=25, time_step
             fire_year=pd.Timestamp(start_date).year,
             iso3=iso3_code,
             data_dir='dataset',
-            project='ee-tpan2203-wildfire'
+            project='ee-your-gee-project'
         )
         
         if feature_cube is not None:
@@ -1150,7 +1150,7 @@ def test_firetracks_pipeline():
     # 配置参数
     config = {
         'use_modis_api': True,  # 使用MODIS API（默认True）
-        'gee_project': 'ee-tpan2203-wildfire',  # GEE项目名称
+        'gee_project': 'ee-your-gee-project',  # GEE项目名称
         'cache_dir': 'dataset',  # 缓存目录（默认dataset）
         'patch_size_km': 25,
         'time_steps': 10,
@@ -1322,7 +1322,7 @@ def _process_single_pixel(pixel_event, ignition_date, component_id, time_window_
 
 def create_pixel_level_positive_samples(preprocessed_data, patch_size_km=25, time_steps=10, 
                                         spatial_resolution_km=1, max_samples=None, target_year_range=None,
-                                        use_modis_api=True, project='ee-tpan2203-wildfire',
+                                        use_modis_api=True, project='ee-your-gee-project',
                                         max_consecutive_errors=5, parallel_workers=2):
     """
     创建像素级正样本：从严重火灾组件中提取起火当天的像素点
@@ -1338,7 +1338,7 @@ def create_pixel_level_positive_samples(preprocessed_data, patch_size_km=25, tim
         max_samples: 最大处理样本数（用于测试，None表示处理全部）
         target_year_range: 目标年份范围 (start_year, end_year)，用于限制时间窗口不早于开始年份
         use_modis_api: 是否使用MODIS API获取土地覆盖类型（默认True，更快）
-        project: GEE项目名称（默认'ee-tpan2203-wildfire'）
+        project: GEE项目名称（默认'ee-your-gee-project'）
         max_consecutive_errors: 最大连续错误数，超过此数量将停止流水线（默认5）
     
     Returns:
@@ -2576,7 +2576,7 @@ def analyze_fire_seasonality(events, target_year_range):
 
 def create_negative_sample_pool(preprocessed_data, target_year_range, patch_size_km=25, 
                                  events_lc=None, spatial_resolution_km=1, fast_mode=False,
-                                 positive_lc_types=None, use_modis_api=True, project='ee-tpan2203-wildfire'):
+                                 positive_lc_types=None, use_modis_api=True, project='ee-your-gee-project'):
     """
     创建区块级别的负样本池
     
@@ -2820,7 +2820,7 @@ def sample_negative_samples_by_land_cover(negative_pool, positive_lc_distributio
                                          patch_size_km=25, time_steps=10, 
                                          spatial_resolution_km=1, spatial_bounds=None,
                                          target_year_range=None,
-                                         use_modis_api=True, project='ee-tpan2203-wildfire',
+                                         use_modis_api=True, project='ee-your-gee-project',
                                          checkpoint_file=None, checkpoint_interval=100):
     """
     按土地覆盖类型分层采样负样本
@@ -3255,7 +3255,7 @@ def sample_negative_samples_by_land_cover(negative_pool, positive_lc_distributio
                 fire_year=pd.Timestamp(sampled_date).year,
                 iso3=iso3_code,
                 data_dir='dataset',
-                project=negative_pool.get('project', 'ee-tpan2203-wildfire') if isinstance(negative_pool, dict) else 'ee-tpan2203-wildfire'
+                project=negative_pool.get('project', 'ee-your-gee-project') if isinstance(negative_pool, dict) else 'ee-your-gee-project'
             )
             
             # 检查特征是否有效（排除数据缺失区域）
@@ -3456,7 +3456,7 @@ def sample_negative_samples_by_land_cover(negative_pool, positive_lc_distributio
                     fire_year=pd.Timestamp(sampled_date).year,
                     iso3=iso3_code,
                     data_dir='dataset',
-                    project=negative_pool.get('project', 'ee-tpan2203-wildfire') if isinstance(negative_pool, dict) else 'ee-tpan2203-wildfire'
+                    project=negative_pool.get('project', 'ee-your-gee-project') if isinstance(negative_pool, dict) else 'ee-your-gee-project'
                 )
                 
                 # 检查特征是否有效（排除数据缺失区域）
@@ -3602,7 +3602,7 @@ def sample_negative_samples_random(negative_pool, num_negative_samples,
                 fire_year=pd.Timestamp(sampled_date).year,
                 iso3=iso3_code,
                 data_dir='dataset',
-                project=negative_pool.get('project', 'ee-tpan2203-wildfire') if isinstance(negative_pool, dict) else 'ee-tpan2203-wildfire'
+                project=negative_pool.get('project', 'ee-your-gee-project') if isinstance(negative_pool, dict) else 'ee-your-gee-project'
             )
             
             # 检查特征是否有效（排除数据缺失区域）
@@ -3739,7 +3739,7 @@ def sample_negative_samples_random(negative_pool, num_negative_samples,
                 fire_year=pd.Timestamp(sampled_date).year,
                 iso3=iso3_code,
                 data_dir='dataset',
-                project='ee-tpan2203-wildfire'
+                project='ee-your-gee-project'
             )
             
             # 检查特征是否有效（排除数据缺失区域）
@@ -3852,7 +3852,7 @@ def sample_negative_samples_random(negative_pool, num_negative_samples,
                 fire_year=(pd.Timestamp(date).year if 'date' in locals() else pd.Timestamp(time_window_end + pd.Timedelta(days=1)).year),
                 iso3=iso3_code,
                 data_dir='dataset',
-                project=negative_pool.get('project', 'ee-tpan2203-wildfire') if isinstance(negative_pool, dict) else 'ee-tpan2203-wildfire'
+                project=negative_pool.get('project', 'ee-your-gee-project') if isinstance(negative_pool, dict) else 'ee-your-gee-project'
             )
             
             # 检查特征是否有效（排除数据缺失区域）
@@ -4036,7 +4036,7 @@ def create_pixel_level_binary_classification_dataset(data_directory, output_path
     
     # 尝试加载缓存
     use_modis_api = config.get('use_modis_api', True)
-    project = config.get('gee_project', 'ee-tpan2203-wildfire')
+    project = config.get('gee_project', 'ee-your-gee-project')
     
     positive_samples, cached_config = load_positive_samples(cache_filepath, verify_config=config)
     
@@ -4302,7 +4302,7 @@ if __name__ == "__main__":
     # 构建配置字典
     config = {
         'use_modis_api': True,
-        'gee_project': 'ee-tpan2203-wildfire',
+        'gee_project': 'ee-your-gee-project',
         'cache_dir': args.cache_dir,
         'patch_size_km': args.patch_size_km,
         'time_steps': args.time_steps,

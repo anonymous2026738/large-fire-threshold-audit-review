@@ -255,7 +255,7 @@ def extract_aligned_features(
     country_code: Optional[str] = None,
     iso3: Optional[str] = None,
     data_dir: str = 'dataset',
-    project: str = 'ee-tpan2203-wildfire',
+    project: str = 'ee-your-gee-project',
     max_retries: int = 3
 ) -> np.ndarray:
     """

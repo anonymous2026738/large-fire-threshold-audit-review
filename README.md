@@ -23,6 +23,21 @@ This release is scoped for **manuscript reproducibility** (threshold audit, Fair
 | `figures/` | Manuscript & supplementary PNGs |
 | `docs/` | Reproduction workflow, feature sources, attribution |
 
+## Top-level text files
+
+| File | Purpose |
+|------|---------|
+| `.gitignore` | Excludes caches, local data products, logs, and other non-release artefacts. |
+| `CITATION.cff` | Citation metadata for the anonymous review release. |
+| `LICENSE` | MIT licence for repository source code. |
+| `README.md` | Repository overview, quick start, reproduction summary, and citation note. |
+| `RELEASE_MANIFEST.md` | Release inventory describing included artefacts and intentionally excluded raw data. |
+| `REPRODUCIBILITY_NOTES.md` | Scope notes explaining what can be reproduced from the release and what requires external data. |
+| `ZENODO_UPLOAD_INSTRUCTIONS.md` | Post-review archive instructions with DOI fields withheld during double-anonymous review. |
+| `environment.yml` | Conda environment specification for the audit workflow. |
+| `requirements.txt` | Python package requirements for pip-based setup. |
+| `zenodo_metadata.json` | Anonymous Zenodo metadata template for later archival release. |
+
 ## Quick start (minimal demo, no full dataset)
 
 ```bash
@@ -85,13 +100,13 @@ Published manuscript numbers match `results/audit/` and `data/processed/audit_*.
 ## Citation
 
 ```bibtex
-@software{pan2026firethresholdaudit,
+@software{anonymous2026firethresholdaudit,
   author       = {Anonymous Author},
   title        = {Group-wise Threshold Effects in a Global Deep Learning Fire Danger Prediction Model: Code and Audit Outputs},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {DOI withheld for double-anonymous review},
-  url          = {https://github.com/anonymous-review/large-fire-threshold-audit-review}
+  url          = {https://github.com/anonymous2026738/large-fire-threshold-audit-review}
 }
 ```
 

@@ -59,7 +59,7 @@ def initialize_gee(project: Optional[str] = None, credentials_path: Optional[str
     初始化Google Earth Engine
     
     Args:
-        project: 可选，GEE项目名称（例如 'ee-tpan2203-wildfire'）
+        project: 可选，GEE项目名称（例如 'ee-your-gee-project'）
         credentials_path: 可选，服务账户密钥文件路径
         silent: 如果为True，失败时不抛出异常，只返回False
     
@@ -511,7 +511,7 @@ class LandCoverCache:
         Args:
             method: 方法，'gee' 或 'hdf'
             year: 年份（用于缓存）
-            project: 可选，GEE项目名称（例如 'ee-tpan2203-wildfire'）
+            project: 可选，GEE项目名称（例如 'ee-your-gee-project'）
         """
         self.method = method
         self.year = year
@@ -665,7 +665,7 @@ if __name__ == '__main__':
         (-33.87, 151.21, "悉尼"),
     ]
     test_year = 2017
-    project = 'ee-tpan2203-wildfire'
+    project = 'ee-your-gee-project'
     
     print(f"\n测试年份: {test_year}")
     print(f"GEE项目: {project}")

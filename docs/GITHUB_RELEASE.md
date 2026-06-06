@@ -13,11 +13,11 @@ git add .
 git status   # verify no .env, no large .pth shards, no E:\ paths in tracked files
 git commit -m "Initial public release v1.0.0 for manuscript reproducibility"
 git branch -M main
-git remote add origin https://github.com/anonymous-review/large-fire-threshold-audit-review.git
+git remote add origin https://github.com/anonymous2026738/large-fire-threshold-audit-review.git
 git push -u origin main
 ```
 
-Repository: https://github.com/anonymous-review/large-fire-threshold-audit-review
+Repository: https://github.com/anonymous2026738/large-fire-threshold-audit-review
 
 ## 3. Pre-push privacy scan
 
