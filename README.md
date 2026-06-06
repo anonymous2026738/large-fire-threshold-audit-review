@@ -28,10 +28,8 @@ This release is scoped for **manuscript reproducibility** (threshold audit, Fair
 | File | Purpose |
 |------|---------|
 | `.gitignore` | Excludes caches, local data products, logs, and other non-release artefacts. |
-| `CITATION.cff` | Citation metadata for the anonymous review release. |
 | `LICENSE` | MIT licence for repository source code. |
 | `README.md` | Repository overview, quick start, reproduction summary, and citation note. |
-| `REPRODUCIBILITY_NOTES.md` | Scope notes explaining what can be reproduced from the release and what requires external data. |
 | `environment.yml` | Conda environment specification for the audit workflow. |
 | `requirements.txt` | Python package requirements for pip-based setup. |
 
@@ -51,7 +49,7 @@ python scripts/reproduce_figures.py
 # Output: results/figures_reproduced/
 ```
 
-See `REPRODUCIBILITY_NOTES.md` for what requires the full `.pth` shards.
+The minimal demo and figure reproduction do not require the full `.pth` shards. Full retraining requires the external datasets and processed tensors described below.
 
 ## Full reproduction (training + audit)
 
