@@ -4,7 +4,7 @@
   "description": "Code, documentation, and processed audit outputs supporting the manuscript on group-wise threshold effects in a global ConvLSTM large-fire danger model (2002-2020). Includes Fairlearn-based group metrics, threshold optimization scripts, Integrated Gradients workflow, manuscript figures, audit CSV tables, plot reproduction cache, and the best-model checkpoint metadata. Full raw geospatial training tensors are not redistributed; see data/README.md for upstream sources.",
   "creators": [
     {
-      "name": "Anonymous Author",
+      "name": "Author, Anonymous",
       "affiliation": "Affiliation withheld for double-anonymous review",
       "orcid": ""
     }
@@ -21,7 +21,7 @@
   "notes": "Data outputs derived by the authors (CSV, plot cache) are recommended CC-BY-4.0 where applicable; upstream Earth observation products retain their original licences.",
   "related_identifiers": [
     {
-      "relation": " cites",
+      "relation": "cites",
       "identifier": "TBD manuscript DOI",
       "resource_type": "publication-article"
     }

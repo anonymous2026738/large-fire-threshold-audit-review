@@ -1,7 +1,6 @@
 # Group-wise threshold audit — global ConvLSTM fire danger model
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/DOI withheld for double-anonymous review.svg)](DOI withheld for double-anonymous review)
 
 > **Licence notice.** Code in this repository is released under the [MIT License](LICENSE). Original third-party datasets are not redistributed and remain subject to their respective licences and access terms. Processed audit outputs provided in this repository are shared for research transparency and reproducibility, unless otherwise noted.
 
@@ -98,7 +97,4 @@ Published manuscript numbers match `results/audit/` and `data/processed/audit_*.
 
 ## Contact
 
-**Anonymous Author** — anonymous@example.com  
-Affiliation withheld for double-anonymous review
-
-For full `.pth` shards or replication questions, email with manuscript title and intended use (academic/non-commercial).
+Contact details are withheld for double-anonymous review. For full `.pth` shards or replication questions, contact information will be provided after peer review or to the editorial office on request.

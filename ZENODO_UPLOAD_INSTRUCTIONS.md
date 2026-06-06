@@ -1,6 +1,6 @@
 # Zenodo upload instructions
 
-**Published DOI:** DOI withheld for double-anonymous review
+**Review DOI:** withheld for double-anonymous review
 
 ---
 
@@ -9,7 +9,7 @@ GitHub CLI (`gh`) was not available in the build environment. Follow these steps
 ## Option A — GitHub ↔ Zenodo integration (recommended)
 
 1. Push this repository to GitHub (see `docs/GITHUB_RELEASE.md`).
-2. Log in to [Zenodo](https://zenodo.org/) → **Account** → **GitHub** → enable sync for `fire-danger-threshold-audit`.
+2. Log in to [Zenodo](https://zenodo.org/) → **Account** → **GitHub** → enable sync for the anonymous review repository.
 3. On GitHub: **Releases** → **Draft a new release** → tag `v1.0.0` → publish.
 4. Zenodo will mint a DOI automatically (usually within minutes).
 5. Copy the DOI into `README.md`, `CITATION.cff`, and the manuscript Data/Code availability statements.
