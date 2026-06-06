@@ -1,7 +1,7 @@
 """
 Fire Equality ConvLSTM Model
-基于PyTorch Lightning的ConvLSTM模型，包含训练、验证、测试循环
-以及损失函数和优化器配置
+PyTorch LightningConvLSTMmodel,, 
+configuration
 """
 
 from typing import Any, List
@@ -14,22 +14,22 @@ from torchmetrics.classification.accuracy import Accuracy
 try:
     from .modules.fire_modules import SimpleConvLSTM
 except ImportError:
-    # 如果作为独立模块运行
+    # 
     from models.modules.fire_modules import SimpleConvLSTM
 
 
 def combine_dynamic_static_inputs(dynamic, static, clc, access_mode):
     """
-    组合动态特征、静态特征和CLC特征
+   , CLC
     
     Args:
-        dynamic: 动态特征张量
-        static: 静态特征张量
-        clc: 土地覆盖特征张量
-        access_mode: 访问模式 ('spatial', 'temporal', 'spatiotemporal')
+        dynamic: 
+        static: 
+        clc: 
+        access_mode:  ('spatial', 'temporal', 'spatiotemporal')
     
     Returns:
-        组合后的输入张量
+        input tensor
     """
     assert access_mode in ['spatial', 'temporal', 'spatiotemporal']
     if access_mode == 'spatial':
@@ -64,9 +64,9 @@ def combine_dynamic_static_inputs(dynamic, static, clc, access_mode):
 
 class ConvLSTM_fire_equality_model(LightningModule):
     """
-    Fire Equality ConvLSTM模型
+    Fire Equality ConvLSTMmodel
     
-    一个PyTorch Lightning模块，组织PyTorch代码到5个部分：
+    PyTorch Lightning,PyTorch5:
         - Computations (init)
         - Train loop (training_step)
         - Validation loop (validation_step)
@@ -90,17 +90,17 @@ class ConvLSTM_fire_equality_model(LightningModule):
             clc='vec'
     ):
         super().__init__()
-        # 保存超参数，允许通过self.hparams访问
+        #,self.hparams
         self.save_hyperparameters()
 
-        # 初始化模型
+        # initializemodel
         self.model = SimpleConvLSTM(hparams=self.hparams)
 
-        # 损失函数：负对数似然损失，带类别权重
+        # :,
         self.criterion = torch.nn.NLLLoss(weight=torch.tensor([1. - positive_weight, positive_weight]))
         
-        # 为训练、验证和测试步骤使用独立的指标实例
-        # 以确保在epoch上的正确归约
+        #, 
+        # epoch
 
         # Accuracy, AUROC, AUPRC, F1
         self.train_accuracy = Accuracy(task='binary')
@@ -119,37 +119,37 @@ class ConvLSTM_fire_equality_model(LightningModule):
         self.test_f1 = F1Score(task='binary')
 
     def forward(self, x: torch.Tensor):
-        """前向传播"""
+        """"""
         return self.model(x)
 
     def step(self, batch: Any):
         """
-        训练/验证/测试步骤的通用逻辑
+        //
         
         Args:
-            batch: 批次数据
-                - 如果长度为4: (dynamic, static, clc, y) - 原始格式
-                - 如果长度为2: (features, y) - 简化格式（直接从FireTracksDataset）
+            batch: 
+                - 4: (dynamic, static, clc, y) - 
+                - 2: (features, y) - (FireTracksDataset)
         
         Returns:
             loss, preds, preds_proba, y
         """
-        # 处理两种数据格式
+        # 
         if len(batch) == 2:
-            # 简化格式: (features, y)
+            # : (features, y)
             # features shape: [B, C, T, H, W]
             features, y = batch
             y = y.long()
             
-            # 将features转换为模型期望的格式 [B, T, C, H, W]
-            # features是 [B, C, T, H, W]，需要转换为 [B, T, C, H, W]
+            # featuresmodel [B, T, C, H, W]
+            # features [B, C, T, H, W], [B, T, C, H, W]
             features = features.permute(0, 2, 1, 3, 4)  # [B, C, T, H, W] -> [B, T, C, H, W]
             
-            # 对于简化格式，直接使用features作为输入
-            # 模型期望的输入格式是 [B, T, C, H, W]
+            #,features
+            # model [B, T, C, H, W]
             logits = self.forward(features)
         else:
-            # 原始格式: (dynamic, static, clc, y)
+            # : (dynamic, static, clc, y)
             dynamic, static, clc, y = batch
             y = y.long()
             if not self.hparams.get('clc', False):
@@ -163,16 +163,16 @@ class ConvLSTM_fire_equality_model(LightningModule):
         return loss, preds, preds_proba, y
 
     def training_step(self, batch: Any, batch_idx: int):
-        """训练步骤"""
+        """"""
         loss, preds, preds_proba, targets = self.step(batch)
 
-        # 更新训练指标
+        # 
         self.train_accuracy.update(preds, targets)
         self.train_auc.update(preds_proba, targets)
         self.train_auprc.update(preds_proba, targets)
         self.train_f1.update(preds, targets)
 
-        # 记录训练指标
+        # 
         self.log("train/loss", loss, on_step=False, on_epoch=True, prog_bar=False)
         self.log("train/acc", self.train_accuracy, on_step=False, on_epoch=True, prog_bar=False)
         self.log("train/auc", self.train_auc, on_step=False, on_epoch=True, prog_bar=False)
@@ -181,20 +181,20 @@ class ConvLSTM_fire_equality_model(LightningModule):
         return {"loss": loss, "preds": preds, "targets": targets}
 
     def on_train_epoch_end(self):
-        """训练 epoch 结束时的操作（Lightning 2.x 替代 training_epoch_end）"""
+        """ epoch (Lightning 2.x  training_epoch_end)"""
         pass
 
     def validation_step(self, batch: Any, batch_idx: int):
-        """验证步骤"""
+        """"""
         loss, preds, preds_proba, targets = self.step(batch)
 
-        # 更新验证指标
+        # 
         self.val_accuracy.update(preds, targets)
         self.val_auc.update(preds_proba, targets)
         self.val_auprc.update(preds_proba, targets)
         self.val_f1.update(preds, targets)
 
-        # 记录验证指标
+        # 
         self.log("val/loss", loss, on_step=False, on_epoch=True, prog_bar=False)
         self.log("val/acc", self.val_accuracy, on_step=False, on_epoch=True, prog_bar=False)
         self.log("val/auc", self.val_auc, on_step=False, on_epoch=True, prog_bar=False)
@@ -203,20 +203,20 @@ class ConvLSTM_fire_equality_model(LightningModule):
         return {"loss": loss, "preds": preds, "targets": targets, "preds_proba": preds_proba}
 
     def on_validation_epoch_end(self):
-        """验证 epoch 结束时的操作（Lightning 2.x 替代 validation_epoch_end）"""
+        """ epoch (Lightning 2.x  validation_epoch_end)"""
         pass
 
     def test_step(self, batch: Any, batch_idx: int):
-        """测试步骤"""
+        """"""
         loss, preds, preds_proba, targets = self.step(batch)
 
-        # 更新测试指标
+        # 
         self.test_accuracy.update(preds, targets)
         self.test_auc.update(preds_proba, targets)
         self.test_auprc.update(preds_proba, targets)
         self.test_f1.update(preds, targets)
 
-        # 记录测试指标
+        # 
         self.log("test/loss", loss, on_step=False, on_epoch=True, prog_bar=False)
         self.log("test/acc", self.test_accuracy, on_step=False, on_epoch=True, prog_bar=False)
         self.log("test/auc", self.test_auc, on_step=False, on_epoch=True, prog_bar=False)
@@ -225,28 +225,28 @@ class ConvLSTM_fire_equality_model(LightningModule):
         return {"loss": loss, "preds": preds, "targets": targets}
 
     def on_test_epoch_end(self):
-        """测试 epoch 结束时的操作（Lightning 2.x 替代 test_epoch_end）"""
+        """ epoch (Lightning 2.x  test_epoch_end)"""
         pass
 
     def configure_optimizers(self):
         """
-        配置优化器和学习率调度器
+        configuration
         
-        损失函数：NLLLoss (负对数似然损失)
-        优化器：Adam
-        学习率调度器：StepLR (阶梯式学习率衰减)
+        :NLLLoss ()
+        :Adam
+        :StepLR ()
         
         Returns:
-            dict: 包含optimizer和lr_scheduler的字典
+            dict: optimizerlr_scheduler
         """
-        # Adam优化器
+        # Adam
         optimizer = torch.optim.Adam(
             params=self.parameters(), 
             lr=self.hparams.lr, 
             weight_decay=self.hparams.weight_decay
         )
 
-        # StepLR学习率调度器
+        # StepLR
         lr_scheduler = torch.optim.lr_scheduler.StepLR(
             optimizer, 
             step_size=self.hparams.lr_scheduler_step,

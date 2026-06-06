@@ -1,6 +1,6 @@
 """
-LIME (Local Interpretable Model-agnostic Explanations) 解释器
-用于局部模型可解释性分析
+LIME (Local Interpretable Model-agnostic Explanations) explainer
+forlocal model interpretability analysis
 """
 
 import torch
@@ -19,18 +19,18 @@ except ImportError:
 
 class LIMEExplainer:
     """
-    LIME解释器类
+    LIME explainer
     
-    提供局部可解释性分析，解释单个预测
+   ,
     """
     
     def __init__(self, model: torch.nn.Module, mode: str = "image"):
         """
-        初始化LIME解释器
+        initializeLIME explainer
         
         Args:
-            model: 训练好的PyTorch模型
-            mode: 模式 ("image" 或 "tabular")
+            model: trained PyTorch model
+            mode:  ("image"  "tabular")
         """
         if not LIME_AVAILABLE:
             raise ImportError("LIME is not installed. Install with: pip install lime")
@@ -41,10 +41,10 @@ class LIMEExplainer:
         
     def create_image_explainer(self, **kwargs):
         """
-        创建图像LIME解释器
+        create an image LIME explainer
         
         Args:
-            **kwargs: 传递给lime_image.LimeImageExplainer的参数
+            **kwargs: passed to lime_image.LimeImageExplainer
         """
         if self.mode != "image":
             raise ValueError("Mode must be 'image' to use image explainer")
@@ -58,12 +58,12 @@ class LIMEExplainer:
         **kwargs
     ):
         """
-        创建表格LIME解释器
+        create a tabular LIME explainer
         
         Args:
-            training_data: 训练数据
-            feature_names: 特征名称列表
-            **kwargs: 传递给lime_tabular.LimeTabularExplainer的参数
+            training_data: 
+            feature_names: feature-name list
+            **kwargs: passed to lime_tabular.LimeTabularExplainer
         """
         if self.mode != "tabular":
             raise ValueError("Mode must be 'tabular' to use tabular explainer")
@@ -84,23 +84,23 @@ class LIMEExplainer:
         num_samples: int = 1000
     ):
         """
-        解释图像实例
+        explain an image instance
         
         Args:
-            image: 输入图像
-            top_labels: 要解释的顶级标签数量
-            hide_color: 隐藏颜色值
-            num_features: 特征数量
-            num_samples: 采样数量
+            image: 
+            top_labels: 
+            hide_color: 
+            num_features: 
+            num_samples: 
         
         Returns:
-            LIME解释结果
+            LIME
         """
         if self.explainer is None:
             self.create_image_explainer()
         
         def model_predict(images):
-            """模型预测函数"""
+            """model prediction function"""
             if isinstance(images, np.ndarray):
                 images = torch.from_numpy(images).float()
             if len(images.shape) == 3:
@@ -131,21 +131,21 @@ class LIMEExplainer:
         num_samples: int = 5000
     ):
         """
-        解释表格实例
+        explain a tabular instance
         
         Args:
-            instance: 输入实例
-            num_features: 要解释的特征数量
-            num_samples: 采样数量
+            instance: 
+            num_features: 
+            num_samples: 
         
         Returns:
-            LIME解释结果
+            LIME
         """
         if self.explainer is None:
             raise ValueError("Tabular explainer not created. Call create_tabular_explainer first.")
         
         def model_predict(instances):
-            """模型预测函数"""
+            """model prediction function"""
             if isinstance(instances, np.ndarray):
                 instances = torch.from_numpy(instances).float()
             
@@ -167,14 +167,14 @@ class LIMEExplainer:
     
     def get_explanation_as_list(self, explanation, label: int = 1):
         """
-        获取解释结果作为列表
+        return the explanation as a list
         
         Args:
-            explanation: LIME解释结果
-            label: 要解释的标签
+            explanation: LIME
+            label: 
         
         Returns:
-            特征重要性列表
+            
         """
         if hasattr(explanation, 'as_list'):
             return explanation.as_list(label=label)
@@ -183,12 +183,12 @@ class LIMEExplainer:
     
     def visualize_explanation(self, explanation, image: Optional[np.ndarray] = None, label: int = 1):
         """
-        可视化解释结果
+        visualize explanation results
         
         Args:
-            explanation: LIME解释结果
-            image: 原始图像（用于图像模式）
-            label: 要可视化的标签
+            explanation: LIME
+            image: (for)
+            label: 
         """
         try:
             if self.mode == "image" and image is not None:
@@ -206,7 +206,7 @@ class LIMEExplainer:
                 plt.axis('off')
                 plt.show()
             else:
-                # 表格模式：打印特征重要性
+                # tabular mode: print feature importance
                 exp_list = self.get_explanation_as_list(explanation, label)
                 print("Feature Importance:")
                 for feature, importance in exp_list:

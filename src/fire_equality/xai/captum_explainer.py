@@ -1,6 +1,6 @@
 """
-Captum解释器
-用于PyTorch模型的可解释性分析
+Captum explainer
+for PyTorch models
 """
 
 import torch
@@ -27,23 +27,23 @@ except ImportError:
 
 class CaptumExplainer:
     """
-    Captum解释器类
+    Captum explainer
     
-    提供多种归因方法用于模型可解释性分析
+    for model
     """
     
     def __init__(self, model: torch.nn.Module):
         """
-        初始化Captum解释器
+        initializeCaptum explainer
         
         Args:
-            model: 训练好的PyTorch模型
+            model: trained PyTorch model
         """
         if not CAPTUM_AVAILABLE:
             raise ImportError("Captum is not installed. Install with: pip install captum")
         
         self.model = model
-        self.model.eval()  # 设置为评估模式
+        self.model.eval()  # 
         
     def integrated_gradients(
         self, 
@@ -53,16 +53,16 @@ class CaptumExplainer:
         n_steps: int = 50
     ):
         """
-        积分梯度归因
+        Integrated Gradients attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
-            baselines: 基线输入
-            n_steps: 积分步数
+            inputs: input tensor
+            target: target class index
+            baselines: baseline input
+            n_steps: number of integration steps
         
         Returns:
-            归因值
+            attribution values
         """
         ig = IntegratedGradients(self.model)
         attributions = ig.attribute(
@@ -81,16 +81,16 @@ class CaptumExplainer:
         n_samples: int = 50
     ):
         """
-        梯度SHAP归因
+        Gradient SHAP attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
-            baselines: 基线输入
-            n_samples: 采样次数
+            inputs: input tensor
+            target: target class index
+            baselines: baseline input
+            n_samples: number of samples
         
         Returns:
-            归因值
+            attribution values
         """
         gs = GradientShap(self.model)
         attributions = gs.attribute(
@@ -103,14 +103,14 @@ class CaptumExplainer:
     
     def saliency(self, inputs: torch.Tensor, target: Optional[int] = None):
         """
-        显著性归因
+        Saliency attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
+            inputs: input tensor
+            target: target class index
         
         Returns:
-            归因值
+            attribution values
         """
         saliency = Saliency(self.model)
         attributions = saliency.attribute(inputs, target=target)
@@ -118,14 +118,14 @@ class CaptumExplainer:
     
     def guided_backprop(self, inputs: torch.Tensor, target: Optional[int] = None):
         """
-        引导反向传播
+        Guided Backpropagation
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
+            inputs: input tensor
+            target: target class index
         
         Returns:
-            归因值
+            attribution values
         """
         gbp = GuidedBackprop(self.model)
         attributions = gbp.attribute(inputs, target=target)
@@ -133,15 +133,15 @@ class CaptumExplainer:
     
     def deeplift(self, inputs: torch.Tensor, target: Optional[int] = None, baselines: Optional[torch.Tensor] = None):
         """
-        DeepLift归因
+        DeepLift attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
-            baselines: 基线输入
+            inputs: input tensor
+            target: target class index
+            baselines: baseline input
         
         Returns:
-            归因值
+            attribution values
         """
         dl = DeepLift(self.model)
         attributions = dl.attribute(inputs, baselines=baselines, target=target)
@@ -155,16 +155,16 @@ class CaptumExplainer:
         strides: Optional[tuple] = None
     ):
         """
-        遮挡归因
+        Occlusion attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
-            sliding_window_shapes: 滑动窗口形状
-            strides: 步长
+            inputs: input tensor
+            target: target class index
+            sliding_window_shapes: sliding window shapes
+            strides: stride
         
         Returns:
-            归因值
+            attribution values
         """
         occlusion_attr = Occlusion(self.model)
         attributions = occlusion_attr.attribute(
@@ -182,15 +182,15 @@ class CaptumExplainer:
         feature_mask: Optional[torch.Tensor] = None
     ):
         """
-        特征消融归因
+        Feature Ablation attribution
         
         Args:
-            inputs: 输入张量
-            target: 目标类别索引
-            feature_mask: 特征掩码
+            inputs: input tensor
+            target: target class index
+            feature_mask: feature mask
         
         Returns:
-            归因值
+            attribution values
         """
         fa = FeatureAblation(self.model)
         attributions = fa.attribute(inputs, target=target, feature_mask=feature_mask)
@@ -203,23 +203,23 @@ class CaptumExplainer:
         method_name: str = "attribution"
     ):
         """
-        可视化归因结果
+        visualize attribution results
         
         Args:
-            attributions: 归因值
-            inputs: 原始输入
-            method_name: 方法名称
+            attributions: attribution values
+            inputs: 
+            method_name: 
         """
         try:
             from captum.attr import visualization as viz
             
-            # 转换为numpy
+            # convert to NumPy
             if isinstance(attributions, torch.Tensor):
                 attributions = attributions.detach().cpu().numpy()
             if isinstance(inputs, torch.Tensor):
                 inputs = inputs.detach().cpu().numpy()
             
-            # 可视化
+            # 
             viz.visualize_image_attributions(
                 attributions,
                 inputs,

@@ -5,7 +5,7 @@ Copyright (c) 2026 Anonymous Author
 This licence applies to source code in this repository only. Original third-party
 datasets are not redistributed and remain subject to their respective licences and
 access terms. Processed audit outputs are shared for research transparency and
-reproducibility, unless otherwise noted (see README.md and data/README.md).
+reproducibility, unless otherwise noted in README.md.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,4 +28,4 @@ SOFTWARE.
 ---
 
 Portions of the model code trace to the Orion-AI-Lab wildfire forecasting template
-(MIT License, Copyright (c) 2022 iprapas). See docs/ATTRIBUTION.md.
+(MIT License, Copyright (c) 2022 iprapas). Attribution: ConvLSTM/training-template lineage adapted from Orion-AI-Lab wildfire forecasting (MIT License, Copyright (c) 2022 iprapas).

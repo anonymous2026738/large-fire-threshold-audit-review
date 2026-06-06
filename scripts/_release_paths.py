@@ -1,4 +1,4 @@
-"""Release 仓库路径工具（避免硬编码本地绝对路径）。"""
+"""Path helpers for the release repository."""
 from pathlib import Path
 
 RELEASE_ROOT = Path(__file__).resolve().parent.parent

@@ -1,5 +1,5 @@
 """
-模型模块包
+model
 """
 
 from .convlstm import ConvLSTM, ConvLSTMCell

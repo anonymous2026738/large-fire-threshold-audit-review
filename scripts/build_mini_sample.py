@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""生成微型 .pth 样本与 schema.json，供读者检查数据格式（非论文全量数据）。"""
+""" .pth  schema.json,()."""
 from __future__ import annotations
 
 import json
@@ -45,7 +45,7 @@ def main() -> None:
     }
     out_pth = p("data", "processed", "mini_sample.pth")
     out_pth.parent.mkdir(parents=True, exist_ok=True)
-    torch.save(payload, out_pth)
+    torch.save(payloading, out_pth)
 
     schema = {
         "file_format": "PyTorch .pth dict",
@@ -54,7 +54,7 @@ def main() -> None:
         "features_shape": "[T, H, W, C] with T=10, H=W=25, C=8",
         "dataloader_tensor_shape": "[C, T, H, W] after FireTracksDataset",
         "target": "integer 0/1 for binary_classification",
-        "full_dataset": "Seven shards processed_firetracks_pixel_binary_YYYY-YYYY.pth (not redistributed; see data/README.md)",
+        "full_dataset": "Seven shards processed_firetracks_pixel_binary_YYYY-YYYY.pth (not redistributed; see README.md)",
     }
     schema_path = p("data", "processed", "schema.json")
     with open(schema_path, "w", encoding="utf-8") as f:

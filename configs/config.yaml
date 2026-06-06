@@ -10,9 +10,9 @@ defaults:
 
 seed: 42
 
-# 训练后是否在测试集上评估
+# 
 test_after_training: true
 
-# 用于超参数优化的指标（可选）
+# for()
 # optimized_metric: val/auc
 

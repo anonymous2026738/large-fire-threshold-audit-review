@@ -1,5 +1,5 @@
-# 使用 2002-2020 全部 7 个分片进行训练（与 paper_draft.tex / 公平性分析一致）
-# 用法：train.py 或 multirun 时加上 datamodule=firetracks_2002_2020
+#  2002-2020  7 ( paper_draft.tex / fairness analysis)
+# :train.py  multirun  datamodule=firetracks_2002_2020
 defaults:
   - firetracks_binary
 

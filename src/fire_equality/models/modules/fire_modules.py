@@ -5,7 +5,7 @@ import numpy as np
 try:
     from .convlstm import ConvLSTM
 except ImportError:
-    # 如果作为独立模块运行
+    # 
     from models.modules.convlstm import ConvLSTM
 
 np.seterr(divide='ignore', invalid='ignore')

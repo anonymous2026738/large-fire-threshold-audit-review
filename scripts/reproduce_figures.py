@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-从已发布的 fairness_plot_cache.pkl 重绘论文审计图（无需 GPU / 完整 .pth 数据）。
+ fairness_plot_cache.pkl ( GPU /  .pth ).
 
-用法（在仓库根目录）:
+():
   python scripts/reproduce_figures.py
   python scripts/reproduce_figures.py --output results/figures_reproduced
 """

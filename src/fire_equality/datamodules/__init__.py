@@ -1,6 +1,6 @@
 """
 Fire Equality DataModules Package
-数据加载和处理模块
+load
 """
 
 from .firetracks_loader import (
@@ -10,7 +10,7 @@ from .firetracks_loader import (
     create_feature_cube,
     FireTracksDataset,
     create_convLSTM_ready_dataset,
-    # 像素级二分类任务
+    # 
     create_pixel_level_positive_samples,
     analyze_positive_sample_land_cover_distribution,
     create_negative_sample_pool,
@@ -28,7 +28,7 @@ __all__ = [
     'create_feature_cube',
     'FireTracksDataset',
     'create_convLSTM_ready_dataset',
-    # 像素级二分类任务
+    # 
     'create_pixel_level_positive_samples',
     'analyze_positive_sample_land_cover_distribution',
     'create_negative_sample_pool',

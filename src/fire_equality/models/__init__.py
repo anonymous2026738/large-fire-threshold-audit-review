@@ -1,6 +1,6 @@
 """
 Fire Equality Models Package
-包含ConvLSTM模型和相关模块
+ConvLSTMmodel
 """
 
 from .modules.convlstm import ConvLSTM, ConvLSTMCell

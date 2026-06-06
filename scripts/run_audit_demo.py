@@ -1,13 +1,12 @@
 #!/usr/bin/env python
-"""
-最小可运行演示：验证 release 布局、缓存与（可选）微型样本 schema。
+"""Run the minimal review demo.
 
-默认仅运行 figures-only 重绘（与 reproduce_figures.py 相同，便于 CI/无数据环境）。
-加 --check-schema 时检查 data/processed/mini_sample.pth 与 schema.json。
+By default this script redraws release figures from the cached plotting data.
+Use --check-schema to validate data/processed/mini_sample.pth against schema.json.
 
-用法:
-  python scripts/run_audit_demo.py
-  python scripts/run_audit_demo.py --check-schema
+Examples:
+    python scripts/run_audit_demo.py
+    python scripts/run_audit_demo.py --check-schema
 """
 from __future__ import annotations
 

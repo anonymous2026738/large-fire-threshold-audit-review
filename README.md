@@ -21,7 +21,6 @@ This release is scoped for **manuscript reproducibility** (threshold audit, Fair
 | `data/processed/` | Audit CSV tables, schema, `mini_sample.pth` |
 | `results/` | Plot cache, audit reports, best checkpoint |
 | `figures/` | Manuscript & supplementary PNGs |
-| `docs/` | Reproduction workflow, feature sources, attribution |
 
 ## Top-level text files
 
@@ -53,7 +52,7 @@ The minimal demo and figure reproduction do not require the full `.pth` shards. 
 
 ## Full reproduction (training + audit)
 
-1. **Obtain raw data** listed in `data/README.md` and build seven `.pth` shards (`docs/BUILD_PTH_COMMANDS.md`).
+1. **Obtain upstream data** from the original providers cited in the manuscript: FireTracks/MODIS fire products, FWI and VPD Zenodo products, GIMMS3G+ NDVI, WorldPop population, World Bank GDP, MODIS MCD12Q1 land cover, and ERA5-Land meteorology.
 2. Place shards under `data/processed/` (filenames `processed_firetracks_pixel_binary_*.pth`).
 3. **Train** (16-run grid + optional fine grid):
 
@@ -75,6 +74,8 @@ python scripts/fairness_analysis.py \
 
 Published manuscript numbers match `results/audit/` and `data/processed/audit_*.csv`.
 
+The full training tensors are expected as seven processed shards covering 2002-2020. Raw third-party rasters and full processed tensors are not redistributed in this review repository.
+
 ## Figures and tables
 
 | Manuscript asset | Source in this repo |
@@ -89,7 +90,7 @@ Published manuscript numbers match `results/audit/` and `data/processed/audit_*.
 
 - **Code**: MIT — see [LICENSE](LICENSE) and the licence notice above; upstream geospatial products are **not** covered by MIT.
 - **Processed audit outputs**: tables, plot cache, checkpoint metadata — in `data/processed/` and `results/` (transparency/reproducibility; not a substitute for third-party data licences).
-- **Full training tensors & raw rasters**: not shipped; see [`data/README.md`](data/README.md).
+- **Full training tensors & raw rasters**: not shipped; obtain them from the upstream providers cited in the manuscript.
 - **Zenodo archive**: DOI withheld for double-anonymous review
 
 ## Citation

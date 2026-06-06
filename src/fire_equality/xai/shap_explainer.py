@@ -1,6 +1,6 @@
 """
-SHAP (SHapley Additive exPlanations) 解释器
-用于模型特征重要性分析
+SHAP (SHapley Additive exPlanations) explainer
+for model
 """
 
 import numpy as np
@@ -18,18 +18,18 @@ except ImportError:
 
 class SHAPExplainer:
     """
-    SHAP解释器类
+    SHAP explainer
     
-    使用SHAP值来解释模型预测，提供特征重要性分析
+    SHAPmodel,
     """
     
     def __init__(self, model: torch.nn.Module, background_data: torch.Tensor):
         """
-        初始化SHAP解释器
+        initializeSHAP explainer
         
         Args:
-            model: 训练好的PyTorch模型
-            background_data: 背景数据集，用于计算SHAP值
+            model: trained PyTorch model
+            background_data: background dataset,forcompute SHAP values
         """
         if not SHAP_AVAILABLE:
             raise ImportError("SHAP is not installed. Install with: pip install shap")
@@ -40,15 +40,15 @@ class SHAPExplainer:
         
     def create_explainer(self, explainer_type: str = "DeepExplainer"):
         """
-        创建SHAP解释器
+        SHAP explainer
         
         Args:
-            explainer_type: 解释器类型 ("DeepExplainer", "KernelExplainer", "LinearExplainer")
+            explainer_type: explainer ("DeepExplainer", "KernelExplainer", "LinearExplainer")
         """
         if explainer_type == "DeepExplainer":
             self.explainer = shap.DeepExplainer(self.model, self.background_data)
         elif explainer_type == "KernelExplainer":
-            # 包装模型函数
+            # model
             def model_wrapper(x):
                 if isinstance(x, np.ndarray):
                     x = torch.from_numpy(x).float()
@@ -64,14 +64,14 @@ class SHAPExplainer:
     
     def explain(self, data: torch.Tensor, max_evals: Optional[int] = None):
         """
-        计算SHAP值
+        compute SHAP values
         
         Args:
-            data: 要解释的数据
-            max_evals: 最大评估次数（仅用于KernelExplainer）
+            data: 
+            max_evals: (forKernelExplainer)
         
         Returns:
-            SHAP值
+            SHAP
         """
         if self.explainer is None:
             self.create_explainer()
@@ -88,12 +88,12 @@ class SHAPExplainer:
     
     def plot_summary(self, shap_values, feature_names: Optional[list] = None, **kwargs):
         """
-        绘制SHAP摘要图
+        plot the SHAP summary plot
         
         Args:
-            shap_values: SHAP值
-            feature_names: 特征名称列表
-            **kwargs: 传递给shap.summary_plot的其他参数
+            shap_values: SHAP
+            feature_names: feature-name list
+            **kwargs: passed to shap.summary_plotadditional arguments
         """
         if not SHAP_AVAILABLE:
             raise ImportError("SHAP is not installed")
@@ -102,12 +102,12 @@ class SHAPExplainer:
     
     def plot_waterfall(self, shap_values, feature_names: Optional[list] = None, **kwargs):
         """
-        绘制SHAP瀑布图
+        plot the SHAP waterfall plot
         
         Args:
-            shap_values: SHAP值
-            feature_names: 特征名称列表
-            **kwargs: 传递给shap.waterfall_plot的其他参数
+            shap_values: SHAP
+            feature_names: feature-name list
+            **kwargs: passed to shap.waterfall_plotadditional arguments
         """
         if not SHAP_AVAILABLE:
             raise ImportError("SHAP is not installed")

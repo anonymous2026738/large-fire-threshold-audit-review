@@ -1,6 +1,6 @@
 """
-可解释性AI (xAI) 分析工具包
-包含SHAP, Captum, LIME等工具
+explainable AI (xAI) analysis toolkit
+SHAP, Captum, LIME
 """
 
 from .shap_explainer import SHAPExplainer

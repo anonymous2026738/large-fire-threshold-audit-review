@@ -1,5 +1,5 @@
-# Run 16: 细网格 around Run4，略小学习率
-# 对应编号 16（multirun 子目录为 0）
+# Run 16:  around Run4,
+#  16(multirun  0)
 model:
   lr: 0.0002
   hidden_size: 64

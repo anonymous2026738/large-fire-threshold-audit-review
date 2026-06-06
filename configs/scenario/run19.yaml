@@ -1,5 +1,5 @@
-# Run 19: 细网格 around Run4，略大容量
-# 对应编号 19（multirun 子目录为 3）
+# Run 19:  around Run4,
+#  19(multirun  3)
 model:
   lr: 0.0003
   hidden_size: 80
