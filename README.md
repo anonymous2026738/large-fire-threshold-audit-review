@@ -4,10 +4,7 @@
 
 > **Licence notice.** Code in this repository is released under the [MIT License](LICENSE). Original third-party datasets are not redistributed and remain subject to their respective licences and access terms. Processed audit outputs provided in this repository are shared for research transparency and reproducibility, unless otherwise noted.
 
-Code, documentation, and **processed audit outputs** supporting:
-
-> **Group-wise Threshold Effects in a Global Deep Learning Fire Danger Prediction Model**  
-> Anonymous Author, Affiliation withheld for double-anonymous review
+Code, documentation, and **processed audit outputs** supporting an anonymous manuscript submission on group-wise threshold effects in global deep learning-based large-fire danger prediction.
 
 This release is scoped for **manuscript reproducibility** (threshold audit, Fairlearn metrics, Integrated Gradients figures)—not a full geospatial data redistribution package.
 
@@ -91,21 +88,4 @@ The full training tensors are expected as seven processed shards covering 2002-2
 - **Code**: MIT — see [LICENSE](LICENSE) and the licence notice above; upstream geospatial products are **not** covered by MIT.
 - **Processed audit outputs**: tables, plot cache, checkpoint metadata — in `data/processed/` and `results/` (transparency/reproducibility; not a substitute for third-party data licences).
 - **Full training tensors & raw rasters**: not shipped; obtain them from the upstream providers cited in the manuscript.
-- **Zenodo archive**: DOI withheld for double-anonymous review
-
-## Citation
-
-```bibtex
-@software{anonymous2026firethresholdaudit,
-  author       = {Anonymous Author},
-  title        = {Group-wise Threshold Effects in a Global Deep Learning Fire Danger Prediction Model: Code and Audit Outputs},
-  year         = {2026},
-  publisher    = {Zenodo},
-  doi          = {DOI withheld for double-anonymous review},
-  url          = {https://github.com/anonymous2026738/large-fire-threshold-audit-review}
-}
-```
-
-## Contact
-
-Contact details are withheld for double-anonymous review. For full `.pth` shards or replication questions, contact information will be provided after peer review or to the editorial office on request.
+- **Archive DOI and contact details**: withheld during double-anonymous review and provided after peer review or to the editorial office on request.
