@@ -1,10 +1,10 @@
-# Group-wise threshold audit — global ConvLSTM fire danger model
+# Post-hoc Group-Specific Threshold Audit for Global Fire-Danger Forecasting
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **Licence notice.** Code in this repository is released under the [MIT License](LICENSE). Original third-party datasets are not redistributed and remain subject to their respective licences and access terms. Processed audit outputs provided in this repository are shared for research transparency and reproducibility, unless otherwise noted.
 
-Code, documentation, and **processed audit outputs** supporting an anonymous manuscript submission on group-wise threshold effects in global deep learning-based large-fire danger prediction.
+Code, documentation, and **processed audit outputs** supporting a post-hoc, group-specific threshold audit for global deep-learning-based large-fire danger prediction.
 
 This release is scoped for **manuscript reproducibility** (threshold audit, Fairlearn metrics, Integrated Gradients figures)—not a full geospatial data redistribution package.
 
